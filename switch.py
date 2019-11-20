@@ -134,7 +134,7 @@ class Switch:
             return not player.hand
         else:
             # draw and (potentially) discard
-            self.draw_and_discard(player)
+            self.draw_and_discard(player, top_card)
             # player still has cards and the game goes on
             return False
 
@@ -174,17 +174,18 @@ class Switch:
             player.hand.append(card)
         return i
 
-    def can_discard(self, card):
+    def can_discard(self, card, top_card):
         """Return whether card can be discarded onto discard pile."""
         # queens and aces can always be discarded
         if card.value in 'QA':
             return True
         # otherwise either suit or value has to match with top card
+        elif card.suit == top_card.suit or card.value == top_card.value:
+            return True
         else:
-            top_card = self.discards[-1]
-            return card.suit == top_card.suit and card.value == top_card.value
+            return False
 
-    def draw_and_discard(self, player):
+    def draw_and_discard(self, player, top_card):
         """Draw a card from stock and discard it if possible.
 
         Parameters:
@@ -200,7 +201,7 @@ class Switch:
             return
         # discard picked card if possible
         card = player.hand[-1]
-        if self.can_discard(card):
+        if self.can_discard(card, top_card) is True:
             self.discard_card(player, card)
         # otherwise inform the player
         elif not player.is_ai:

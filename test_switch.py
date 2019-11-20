@@ -71,39 +71,39 @@ def test_pick_up_card__pick_correct_number():
 
 def test_can_discard__follows_suit():
     s = mock_setup_round([], '', '♣5')
-    assert s.can_discard(Card('♣', '2'))
-    assert s.can_discard(Card('♣', '3'))
-    assert s.can_discard(Card('♣', '4'))
-    assert s.can_discard(Card('♣', '6'))
-    assert s.can_discard(Card('♣', '7'))
-    assert s.can_discard(Card('♣', '8'))
-    assert s.can_discard(Card('♣', '9'))
-    assert s.can_discard(Card('♣', '10'))
-    assert s.can_discard(Card('♣', 'J'))
-    assert s.can_discard(Card('♣', 'K'))
+    assert s.can_discard(Card('♣', '2'), s.discards[0])
+    assert s.can_discard(Card('♣', '3'), s.discards[0])
+    assert s.can_discard(Card('♣', '4'), s.discards[0])
+    assert s.can_discard(Card('♣', '6'), s.discards[0])
+    assert s.can_discard(Card('♣', '7'), s.discards[0])
+    assert s.can_discard(Card('♣', '8'), s.discards[0])
+    assert s.can_discard(Card('♣', '9'), s.discards[0])
+    assert s.can_discard(Card('♣', '10'), s.discards[0])
+    assert s.can_discard(Card('♣', 'J'), s.discards[0])
+    assert s.can_discard(Card('♣', 'K'), s.discards[0])
 
 
 def test_can_discard__follows_value():
     s = mock_setup_round([], '', '♣5')
-    assert s.can_discard(Card('♢', '5'))
-    assert s.can_discard(Card('♡', '5'))
-    assert s.can_discard(Card('♠', '5'))
+    assert s.can_discard(Card('♢', '5'), s.discards[0])
+    assert s.can_discard(Card('♡', '5'), s.discards[0])
+    assert s.can_discard(Card('♠', '5'), s.discards[0])
 
 
 def test_can_discard__allows_ace():
     s = mock_setup_round([], '', '♣5')
-    assert s.can_discard(Card('♢', 'A'))
-    assert s.can_discard(Card('♡', 'A'))
-    assert s.can_discard(Card('♠', 'A'))
-    assert s.can_discard(Card('♣', 'A'))
+    assert s.can_discard(Card('♢', 'A'), s.discards[0])
+    assert s.can_discard(Card('♡', 'A'), s.discards[0])
+    assert s.can_discard(Card('♠', 'A'), s.discards[0])
+    assert s.can_discard(Card('♣', 'A'), s.discards[0])
 
 
 def test_can_discard__allows_queen():
     s = mock_setup_round([], '', '♣5')
-    assert s.can_discard(Card('♢', 'Q'))
-    assert s.can_discard(Card('♡', 'Q'))
-    assert s.can_discard(Card('♠', 'Q'))
-    assert s.can_discard(Card('♣', 'Q'))
+    assert s.can_discard(Card('♢', 'Q'), s.discards[0])
+    assert s.can_discard(Card('♡', 'Q'), s.discards[0])
+    assert s.can_discard(Card('♠', 'Q'), s.discards[0])
+    assert s.can_discard(Card('♣', 'Q'), s.discards[0])
 
 
 def test_discard_card__sets_skip():
