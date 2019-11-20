@@ -101,19 +101,19 @@ class Switch:
         called to draw from stock.
         """
         # apply any pending penalties (skip, draw2, draw4)
-        if self.skip:
+        if self.skip is True:
             # return without performing any discard
-            self.skip == False
+            self.skip = False
             UI.print_message('{} is skipped.'.format(player.name))
-        elif self.draw2:
+        elif self.draw2 is True:
             # draw two cards
             picked = self.pick_up_card(player, 2)
-            self.draw2 == False
+            self.draw2 = False
             UI.print_message('{} draws {} cards.'.format(player.name, picked))
-        elif self.draw4:
+        elif self.draw4 is True:
             # draw four cards
             picked = self.pick_up_card(player, 4)
-            self.draw4 == False
+            self.draw4 = False
             UI.print_message('{} draws {} cards.'.format(player.name, picked))
 
         top_card = self.discards[-1]
@@ -172,7 +172,7 @@ class Switch:
             card = self.stock.pop()
             # and add to hand
             player.hand.append(card)
-        return i
+        return n-1
 
     def can_discard(self, card, top_card):
         """Return whether card can be discarded onto discard pile."""
@@ -233,7 +233,7 @@ class Switch:
             self.draw4 = True
         # if card is a king, game direction reverses
         elif card.value == 'K':
-            self.direction *= 1
+            self.direction *= -1
             UI.print_message("Game direction reversed.")
         # if card is a jack, ask player with whom to swap hands
         elif card.value == 'J':

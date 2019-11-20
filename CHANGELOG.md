@@ -25,3 +25,11 @@
   Then changed the input parameters of can_discard and draw_and_discard so that they require the input of the card, 
   currently at the top of the discard pile.
   
+* v1.2.1 [2019-11-20]: Bug fixes.
+    - Logic Error: Corrected discard_card function on line 236 of switch.py so that if a K is discarded, the direction 
+    is multiplied by -1 instead of 1 so the direction is actually reversed.
+    - Unbound Local Error: Changed the function pick_up_card to return n-1, which is equivalent to i at the 
+    end of the for loop, instead of returning i. This is because the return statement is outside of the for loop so 
+    it cannot call upon the iterator of the for loop.
+    - Syntax Error: Corrected the run_player function in switch.py so that when setting variables to False it uses the 
+    setting operator ('=') instead of the equivalence operator ('==').
