@@ -60,7 +60,7 @@ class Switch:
                 break
             else:
                 # advance player index depending on self.direction
-                i = i+self.direction % len(self.players)
+                i = (i + self.direction) % len(self.players)
         UI.print_winner_of_game(self.players[i])
 
     def setup_round(self):
@@ -75,6 +75,7 @@ class Switch:
         random.shuffle(self.stock)
         # initialize discard pile with top card
         self.discards = [self.stock.pop()]
+        print(f'{len(self.discards)} cards in discards.') # DELETE ME, DELETE MY PRINT STATEMENT
         # deal hands
         for player in self.players:
             self.pick_up_card(player, HAND_SIZE)
@@ -131,7 +132,10 @@ class Switch:
             # discard card and determine whether player has won
             self.discard_card(player, card)
             # if all cards discarded, return True
-            return not player.hand
+            if len(player.hand) == 0:
+                return True
+            else:
+                return False
         else:
             # draw and (potentially) discard
             self.draw_and_discard(player, top_card)

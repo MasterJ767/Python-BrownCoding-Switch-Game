@@ -33,3 +33,10 @@
     it cannot call upon the iterator of the for loop.
     - Syntax Error: Corrected the run_player function in switch.py so that when setting variables to False it uses the 
     setting operator ('=') instead of the equivalence operator ('==').
+
+* v1.3.0 [2019-11-21]: Fixed the win check.
+ Changed the run_player function in switch.py file to correctly return True or False under the right conditions.
+ Then changed a line in the run_round function from `i = i + self.direction % len(self.players)` to 
+ `i = (i + self.direction) % len(self.players)` so that it has the correct functionality as the modulo operator is 
+ carried out before the addition operator, however the correct functionality of the program requires the addition to 
+ be completed first. 
