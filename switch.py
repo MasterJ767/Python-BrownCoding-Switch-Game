@@ -75,7 +75,6 @@ class Switch:
         random.shuffle(self.stock)
         # initialize discard pile with top card
         self.discards = [self.stock.pop()]
-        print(f'{len(self.discards)} cards in discards.') # DELETE ME, DELETE MY PRINT STATEMENT
         # deal hands
         for player in self.players:
             self.pick_up_card(player, HAND_SIZE)
@@ -160,7 +159,7 @@ class Switch:
         sufficient, the maximum possible number of cards is picked.
         """
         # repeat n times
-        for i in range(1, n):
+        for i in range(1, n+1):
             # if no more card in stock pile
             if not self.stock:
                 # add back discarded cards (but not top card)
@@ -176,12 +175,12 @@ class Switch:
             card = self.stock.pop()
             # and add to hand
             player.hand.append(card)
-        return n-1
+        return n
 
     def can_discard(self, card, top_card):
         """Return whether card can be discarded onto discard pile."""
         # queens and aces can always be discarded
-        if card.value in 'QA':
+        if card.value == 'Q' or card.value == 'A':
             return True
         # otherwise either suit or value has to match with top card
         elif card.suit == top_card.suit or card.value == top_card.value:
@@ -230,7 +229,7 @@ class Switch:
         elif card.value == '8':
             self.skip = True
         # if card is a two, next player needs to draw two
-        elif card.value == '4':
+        elif card.value == '2':
             self.draw2 = True
         # if card is a queen, next player needs to draw four
         elif card.value == 'Q':

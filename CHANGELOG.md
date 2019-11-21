@@ -40,3 +40,16 @@
  `i = (i + self.direction) % len(self.players)` so that it has the correct functionality as the modulo operator is 
  carried out before the addition operator, however the correct functionality of the program requires the addition to 
  be completed first. 
+ 
+* v1.3.1 [2019-11-21]: Bug Fixes.
+    - Syntax Error: Corrected the format of the input of the all() function in the test_setup_round__deals_cards 
+    function in the test_switch.py file.
+    - Logic Error: Changed the range of the for loop for the pick_up_card function in switch.py so that the range goes
+    from 1 to 1 greater than the number of cards which the player is picking up so that the player picks up the correct 
+    number of cards. The same function now returns n instead of n + 1 as it needs to return the number of cards the 
+    player picked up, which is 1 less than the limit of the range of the for loop.
+    - Logic Error: Changed the elif statement in the discard_card function so that it correctly sets draw2 to true if 
+    the player discards a card of value 2.
+    
+    
+    

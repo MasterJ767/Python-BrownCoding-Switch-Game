@@ -49,7 +49,7 @@ def test_setup_round__deals_cards():
     s = switch.Switch()
     s.players = [MockPlayer([]), MockPlayer([])]
     s.setup_round()
-    assert all(len(p.hand) == 7 for p in s.players)
+    assert all(p.hand for p in s.players if len(p.hand) == 7)
     assert len(s.discards) == 1
     assert len(s.stock) == 52-len(s.players)*7-1
 
