@@ -41,7 +41,7 @@
  carried out before the addition operator, however the correct functionality of the program requires the addition to 
  be completed first. 
  
-* v1.3.1 [2019-11-21]: Bug Fixes.
+* v1.3.1 [2019-11-21]: Bug fixes.
     - Syntax Error: Corrected the format of the input of the all() function in the test_setup_round__deals_cards 
     function in the test_switch.py file.
     - Logic Error: Changed the range of the for loop for the pick_up_card function in switch.py so that the range goes
@@ -51,7 +51,7 @@
     - Logic Error: Changed the elif statement in the discard_card function so that it correctly sets draw2 to true if 
     the player discards a card of value 2.
     
-* v1.3.2 [2019-11-25]: Bug Fixes.
+* v1.3.2 [2019-11-25]: Bug fixes.
     - Syntax Error: Corrected the generator function on line 124 of switch.py. Changed the if statement in the 
     generator function from `if self.can_discard` to `if self.can_discard(card, top_card)` so that it actually checks
     that the card is discardable.
@@ -63,5 +63,8 @@
  rotate left. To overcome this, the list is split and reformed as follows: `sizes[idx:] + sizes[:idx]` instead of 
  how it was previously done: `sizes[:idx] + sizes[idx:]`.
  
- 
-    
+* v1.4.1 [2019-11-25]: Bug fixes:
+    - Logic Error: Inserted a return nothing statement to run_player function on line 108 of the switch.py file. This makes it so
+    that when a player plays a card of value 8, it skips the next player in the game's turn. They no longer pick up or
+    discard any cards on their turn.
+    - Updated the welcome message again so that it reflects current version of the game

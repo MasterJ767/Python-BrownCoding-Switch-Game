@@ -151,6 +151,7 @@ def test_get_normalized_hand_sizes_3player():
     assert s.get_normalized_hand_sizes(s.players[1]) == [2, 1, 3]
     assert s.get_normalized_hand_sizes(s.players[2]) == [3, 2, 1]
 
+
 def test_get_normalized_hand_sizes_4player():
     """test hand size normalization"""
     s = mock_setup_round(['♣4', '♣K ♣9', '♡J ♢5 ♢6', '♡2 ♡3 ♡10 ♡8'], '♢7 ♢8', '♡3')
@@ -164,6 +165,7 @@ def test_get_normalized_hand_sizes_4player():
     assert s.get_normalized_hand_sizes(s.players[1]) == [2, 1, 4, 3]
     assert s.get_normalized_hand_sizes(s.players[2]) == [3, 2, 1, 4]
     assert s.get_normalized_hand_sizes(s.players[3]) == [4, 3, 2, 1]
+
 
 def test_swap_hands():
     """Test swapping of hands"""
