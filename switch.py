@@ -107,12 +107,12 @@ class Switch:
             UI.print_message('{} is skipped.'.format(player.name))
         elif self.draw2 is True:
             # draw two cards
-            picked = self.pick_up_card(player, 2)
+            picked = self.pick_up_card(player, n=2)
             self.draw2 = False
             UI.print_message('{} draws {} cards.'.format(player.name, picked))
         elif self.draw4 is True:
             # draw four cards
-            picked = self.pick_up_card(player, 4)
+            picked = self.pick_up_card(player, n=4)
             self.draw4 = False
             UI.print_message('{} draws {} cards.'.format(player.name, picked))
 
@@ -121,7 +121,7 @@ class Switch:
         UI.print_player_info(player, top_card, hand_sizes)
 
         # determine discardable cards
-        discardable = [card for card in player.hand if self.can_discard]
+        discardable = [card for card in player.hand if self.can_discard(card, top_card) is True]
 
         # have player select card
         hands = self.get_normalized_hand_sizes(player)
@@ -159,7 +159,7 @@ class Switch:
         sufficient, the maximum possible number of cards is picked.
         """
         # repeat n times
-        for i in range(1, n+1):
+        for i in range(1, (n+1)):
             # if no more card in stock pile
             if not self.stock:
                 # add back discarded cards (but not top card)
@@ -260,12 +260,12 @@ class Switch:
         sizes = [len(p.hand) for p in self.players]
         idx = self.players.index(player)
         # rotate list so that given player is first
-        sizes = sizes[:idx] + sizes[idx:]
+        sizes = sizes[idx:] + sizes[:idx]
         # if direction is counter-clockwise, reverse the order and
         # bring given player back to the front
         if self.direction == -1:
             sizes.reverse()
-            sizes.insert(0, sizes.pop())
+            sizes = sizes[idx-(idx-2):] + sizes[:idx-(idx-2)]
         return sizes
 
     def swap_hands(self, p1, p2):

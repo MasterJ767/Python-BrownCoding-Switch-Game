@@ -51,5 +51,15 @@
     - Logic Error: Changed the elif statement in the discard_card function so that it correctly sets draw2 to true if 
     the player discards a card of value 2.
     
-    
+* v1.3.2 [2019-11-25]: Bug Fixes.
+    - Syntax Error: Corrected the generator function on line 124 of switch.py. Changed the if statement in the 
+    generator function from `if self.can_discard` to `if self.can_discard(card, top_card)` so that it actually checks
+    that the card is discardable.
+    - Updated welcome message so that it reflects the correct version of the game.
+
+* v1.4.0 [2019-11-25]: Fixed hand normalization.
+ Changed the get_normalized_hand_sizes function in switch.py file. When rotating left, the function now splits the list
+ like this: `sizes[idx:] + sizes[:idx]` instead of like this: `sizes[:idx] + sizes[idx:]`. For the reverse direction
+ the same thing is applied to the list first, then it is reversed in direction and reformed using the following 
+ operation: `sizes = sizes[idx-(idx-2):] + sizes[:idx-(idx-2)]`. 
     
