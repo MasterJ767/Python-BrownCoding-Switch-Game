@@ -58,8 +58,10 @@
     - Updated welcome message so that it reflects the correct version of the game.
 
 * v1.4.0 [2019-11-25]: Fixed hand normalization.
- Changed the get_normalized_hand_sizes function in switch.py file. When rotating left, the function now splits the list
- like this: `sizes[idx:] + sizes[:idx]` instead of like this: `sizes[:idx] + sizes[idx:]`. For the reverse direction
- the same thing is applied to the list first, then it is reversed in direction and reformed using the following 
- operation: `sizes = sizes[idx-(idx-2):] + sizes[:idx-(idx-2)]`. 
+ Introduced a new test to the test suite which checks the hand normalization for a four play game.
+ Changed the get_normalized_hand_sizes function in switch.py file. The function was rotating right when it needed to 
+ rotate left. To overcome this, the list is split and reformed as follows: `sizes[idx:] + sizes[:idx]` instead of 
+ how it was previously done: `sizes[:idx] + sizes[idx:]`.
+ 
+ 
     

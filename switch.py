@@ -265,7 +265,7 @@ class Switch:
         # bring given player back to the front
         if self.direction == -1:
             sizes.reverse()
-            sizes = sizes[idx-(idx-2):] + sizes[:idx-(idx-2)]
+            sizes.insert(0, sizes.pop())
         return sizes
 
     def swap_hands(self, p1, p2):
