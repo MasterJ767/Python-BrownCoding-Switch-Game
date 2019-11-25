@@ -58,7 +58,7 @@
     - Updated welcome message so that it reflects the correct version of the game.
 
 * v1.4.0 [2019-11-25]: Fixed hand normalization.
- Introduced a new test to the test suite which checks the hand normalization for a four play game.
+ Introduced a new test to the test suite which checks the hand normalization for a four player game.
  Changed the get_normalized_hand_sizes function in switch.py file. The function was rotating right when it needed to 
  rotate left. To overcome this, the list is split and reformed as follows: `sizes[idx:] + sizes[:idx]` instead of 
  how it was previously done: `sizes[:idx] + sizes[idx:]`.
